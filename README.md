@@ -34,10 +34,10 @@ Generate headers for calling from C code
 
 Build GNU/Linux `Makefile` (to build C/C++ code, etc)
 --------------------------------------------------------------
-`docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build/qcdm_filter && make -j`nproc`"`
+`docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build/qcdm_filter && make -j$(nproc)"`
 
 Build 'Android.mk' (in 'jni' folder of NDK C/C++ project folders)
 -----------------------------------------------------------------------------------------
-`docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build/qcdm_filter/android_exec_5/jni && ndk-build -j`nproc`"`
+`docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build/qcdm_filter/android_exec_5/jni && ndk-build -j$(nproc)"`
 
 
