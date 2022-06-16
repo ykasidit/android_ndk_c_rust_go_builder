@@ -15,7 +15,7 @@ Build Rust executable or shared/static lib for Android example
 
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build && cargo ndk build"`
 
-Build Rust executable or shared/static lib for GNU\Linux (Ubuntu 20.04)
+Build Rust executable or shared/static lib for GNU/Linux (Ubuntu 20.04)
 -------------------------------------------------------------------------------------------------------
 
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build && cargo build"`
