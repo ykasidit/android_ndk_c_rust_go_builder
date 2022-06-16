@@ -32,7 +32,7 @@ Generate headers for calling from C code
 
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build && cbindgen . -o yourlib.h"`
 
-Build GNU\Linux `Makefile` (to build C/C++ code, etc)
+Build GNU/Linux `Makefile` (to build C/C++ code, etc)
 --------------------------------------------------------------
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build/qcdm_filter && make -j`nproc`"`
 
