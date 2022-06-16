@@ -1,7 +1,7 @@
 Android NDK, Rust 'cargo ndk' builder docker image
 ==========================================
 
-Use this image can quickly let you build Rust executables or shared/static libs for Android via the ['cargo ndk' project](https://github.com/bbqsrc/cargo-ndk) - full credit to the respective authors.
+Use this image to quickly build Rust (or C/C++ using the `ndk-build` command) executables or shared/static libs for Android via the ['cargo ndk' project](https://github.com/bbqsrc/cargo-ndk) - full credit to the respective authors.
 Below example commands are to be run in an existing Rust cargo created project folder.
 
 Dockerfile source code in hosted at the [android_ndk_and_rust_cargo_ndk_builder_docker_image repo on github](https://github.com/ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image).
