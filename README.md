@@ -15,21 +15,21 @@ https://hub.docker.com/r/ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_
 
 Below example commands are to be run in an existing Rust cargo created project folder.
 
-Build Rust executable or shared/static lib for Android example
+Rust: build executable or shared/static lib for Android example
 -----------------------------------------------------------------------------------------
 
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build && cargo ndk build"`
 
-Build Rust executable or shared/static lib for GNU/Linux (Ubuntu 20.04)
+Rust: build executable or shared/static lib for GNU/Linux (Ubuntu 20.04)
 -------------------------------------------------------------------------------------------------------
 
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build && cargo build"`
 
-Clean the project ('target' folder)
+Rust: clean the project ('target' folder)
 ------------------------------------------------
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build && cargo clean"`
 
-Generate headers for calling from C code
+Rust: Generate headers for calling from C code
 ------------------------------------------------------------
 - First create a file named `cbindgen.toml` containing the text:
 `language = "C"`
@@ -37,12 +37,10 @@ Generate headers for calling from C code
 
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build && cbindgen . -o yourlib.h"`
 
-Build GNU/Linux `Makefile` (to build C/C++ code, etc)
---------------------------------------------------------------
-`docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build/qcdm_filter && make -j$(nproc)"`
-
-Build 'Android.mk' (in 'jni' folder of NDK C/C++ project folders)
+C/C++: build 'Android.mk' (in 'jni' folder of NDK C/C++ project folders)
 -----------------------------------------------------------------------------------------
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build/qcdm_filter/android_exec_5/jni && ndk-build -j$(nproc)"`
 
-
+C/C++: build GNU/Linux `Makefile` (to build C/C++ code, etc)
+--------------------------------------------------------------
+`docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build/qcdm_filter && make -j$(nproc)"`
