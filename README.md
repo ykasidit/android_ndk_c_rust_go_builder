@@ -13,20 +13,21 @@ Full credit to the respective authors.
 Dockerhub page:
 https://hub.docker.com/r/ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image
 
-Below example commands are to be run in an existing Rust cargo created project folder.
+Below are some example usage/commands:
 
 Rust: build executable or shared/static lib for Android example
 -----------------------------------------------------------------------------------------
-
+(Run in an existing Rust cargo created project folder)
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build && cargo ndk build"`
 
 Rust: build executable or shared/static lib for GNU/Linux (Ubuntu 20.04)
 -------------------------------------------------------------------------------------------------------
-
+(Run in an existing Rust cargo created project folder)
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build && cargo build"`
 
 Rust: clean the project ('target' folder)
 ------------------------------------------------
+(Run in an existing Rust cargo created project folder)
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build && cargo clean"`
 
 Rust: Generate headers for calling from C code
@@ -34,7 +35,7 @@ Rust: Generate headers for calling from C code
 - First create a file named `cbindgen.toml` containing the text:
 `language = "C"`
 - Then run command:
-
+(Run in an existing Rust cargo created project folder)
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build && cbindgen . -o yourlib.h"`
 
 C/C++: build 'Android.mk' (in 'jni' folder of NDK C/C++ project folders)
