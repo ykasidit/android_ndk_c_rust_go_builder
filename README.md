@@ -1,5 +1,5 @@
-Android NDK, Rust 'cargo ndk' builder docker image
-==========================================
+Android NDK Rust `cargo ndk` and C/C++ `ndk-build` builder docker image
+=======================================================================
 
 Use this image to quickly build Rust and/or C/C++ executables or shared/static libs for Android.
 
