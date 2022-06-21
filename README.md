@@ -42,9 +42,9 @@ Rust: Generate headers for calling from C code
 
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build && cbindgen . -o yourlib.h"`
 
-C/C++: build 'Android.mk' for Android
+C/C++: build `Android.mk` for Android
 -------------------------
-(Run in the 'jni' folder of NDK C/C++ project folder)
+(Run in the 'jni' folder - that contains the `Android.mk` file - inside the desired NDK C/C++ project folder)
 
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest bash -c "cd /build/qcdm_filter/android_exec_5/jni && ndk-build -j$(nproc)"`
 
