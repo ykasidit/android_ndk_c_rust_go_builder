@@ -27,10 +27,10 @@ ADD ./android-ndk-r22b /android-sdk/android-ndk-r22b
 # install rust stuff
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
 ENV PATH="/home/report_worker/.cargo/bin:$PATH"
-RUN cargo install cargo-ndk
-RUN cargo install cbindgen
 ENV PATH="/android-sdk/android-ndk-r22b:$PATH"
 ENV ANDROID_NDK_HOME=/android-sdk/android-ndk-r22b
 RUN rustup target add \
     aarch64-linux-android \
     armv7-linux-androideabi
+RUN cargo install cargo-ndk
+RUN cargo install cbindgen bindgen
