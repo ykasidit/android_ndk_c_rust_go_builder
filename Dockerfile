@@ -2,6 +2,7 @@ FROM ykasidit/ubuntu-pandas-data-to-report-and-more-python3:latest
 
 USER root
 
+# some old requirements for some old C-calling python2 tests
 RUN apt-get -y install python2 socat
 RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
 RUN python2 get-pip.py
