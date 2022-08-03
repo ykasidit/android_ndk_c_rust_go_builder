@@ -1,4 +1,4 @@
-Android NDK C/C++, Rust and Golang builder docker image
+Android NDK C/C++, Rust and Golang binary builder docker image
 =======================================================
 
 Use this image to quickly build Rust, Go or C/C++ executables, shared/static libs for Android.
