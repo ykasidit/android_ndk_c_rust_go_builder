@@ -1,12 +1,13 @@
-Android NDK Rust `cargo ndk` and C/C++ `ndk-build` builder docker image
-=======================================================================
+Android NDK C/C++, Rust and Golang builder docker image
+=======================================================
 
-Use this image to quickly build Rust or C/C++ executables, shared/static libs for Android via the `cargo ndk` or the `ndk-build` command respectively.
+Use this image to quickly build Rust, Go or C/C++ executables, shared/static libs for Android.
 
 - Android Rust build support provided by the [`cargo ndk` command/project](https://github.com/bbqsrc/cargo-ndk).
 - This image also contains [cbindgen](https://docs.rs/cbindgen/latest/cbindgen/)
 - Android C/C++ build support provided by the `ndk-build` command of the [Android NDK](https://developer.android.com/ndk/downloads) version r22b as that works with `cargo ndk` at the time of this writing. 
 - Common [`GCC` C/C++ compilers](https://gcc.gnu.org/) and [`GNU make`](https://www.gnu.org/software/make/) for Ubuntu 20.04 GNU/Linux.
+- Golang build support from the official [Go install page](https://go.dev/doc/install).
 
 Full credit to the respective authors.
 
