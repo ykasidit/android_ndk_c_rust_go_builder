@@ -13,7 +13,7 @@ Full credit to the respective authors.
 Dockerhub page:
 https://hub.docker.com/r/ykasidit/android_ndk_c_rust_go_builder
 
-Below are some example usage/commands:
+Below are some `docker run` example usage/commands. (For faster builds that keeps a cache of dependencies, you can use `docker create` with a loop wait cmd like `bash -c "while true; do sleep 1; done"` then `docker start` your image as a running container then `docker exec` into that container to build into an existing container instead.)
 
 Rust: build executable or shared/static lib for Android
 -----------------------------------------------------------------
@@ -54,8 +54,15 @@ C/C++: build GNU/Linux `Makefile` (to build C/C++ code, etc)
 
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder:latest bash -c "cd /build/qcdm_filter && make -j$(nproc)"`
 
-Golang: Build Android binaries
+Golang: Build for Android
 -------------------------------
 (Run in the folder of the `go.mod` or upper then cd into them if have other folder dependencies)
 
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder:latest bash -c 'cd /build && CC=$ANDROID_TOOLCHAIN CXX=$ANDROID_TOOLCHAIN CGO_ENABLED=1 CGO_CFLAGS=-fcommon GOOS=android GOARCH=arm64 go build -ldflags="-s -w"'`
+
+Golang: Build for GNU/Linux
+-------------------------------
+(Run in the folder of the `go.mod` or upper then cd into them if have other folder dependencies)
+
+`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder:latest bash -c 'cd /build && go build'`
+
