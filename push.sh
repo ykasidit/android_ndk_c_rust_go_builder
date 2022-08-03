@@ -1,1 +1,1 @@
-docker push ykasidit/android_ndk_and_rust_cargo_ndk_builder_docker_image:latest
+docker push ykasidit/android_ndk_c_rust_go_builder:latest
