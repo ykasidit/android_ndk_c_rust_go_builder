@@ -53,3 +53,9 @@ C/C++: build GNU/Linux `Makefile` (to build C/C++ code, etc)
 (Run in the folder that has your `Makefile`)
 
 `docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder:latest bash -c "cd /build/qcdm_filter && make -j$(nproc)"`
+
+Golang: Build Android binaries
+-------------------------------
+(Run in the folder of the `go.mod` or upper then cd into them if have other folder dependencies)
+
+`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder:latest bash -c 'cd /build && CC=$ANDROID_TOOLCHAIN CXX=$ANDROID_TOOLCHAIN CGO_ENABLED=1 CGO_CFLAGS=-fcommon GOOS=android GOARCH=arm64 go build -ldflags="-s -w"'`
