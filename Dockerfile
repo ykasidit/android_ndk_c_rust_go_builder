@@ -24,7 +24,7 @@ RUN apt -y install wget
 
 # install go stuff
 RUN wget https://go.dev/dl/go1.18.4.linux-amd64.tar.gz && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.18.4.linux-amd64.tar.gz && rm go1.18.4.linux-amd64.tar.gz
-RUN apt -y install file
+RUN apt -y install file clang
 
 USER builder
 ENV PATH="${PATH}:/usr/local/go/bin"
