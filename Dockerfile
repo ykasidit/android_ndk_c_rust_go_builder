@@ -30,3 +30,17 @@ USER builder
 ENV PATH="${PATH}:/usr/local/go/bin"
 ENV ANDROID_TOOLCHAIN=/android-sdk/android-ndk-r22b/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android21-clang
 RUN go install std
+
+USER root
+
+# some requirements for some C-calling python tests and some old 32bit libs
+RUN mkdir /sdcard && chmod 777 /sdcard && mkdir /data && chmod 777 /data && mkdir -p /android-sdk && chmod 777 /android-sdk
+RUN dpkg --add-architecture i386
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tshark socat pcregrep lib32z1 libc6-i386 lib32stdc++6 libclang-dev
+RUN apt-get -y install python2 socat pcregrep tshark lib32z1 libc6-i386 lib32stdc++6 libclang-dev
+RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+RUN python2 get-pip.py
+RUN python2 -m pip install pandas==0.24.2
+RUN python2 -m pip install gevent==20.9.0
+RUN apt -y install xxd
+USER builder
