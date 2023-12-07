@@ -1,1 +1,1 @@
-docker push ykasidit/android_ndk_c_rust_go_builder:latest
+docker push ykasidit/android_ndk_c_rust_go_builder_ext:latest
