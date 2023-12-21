@@ -8,11 +8,12 @@ ENV ANDROID_NDK_HOME=/android-sdk/android-ndk-r22b
 RUN apt -y update
 RUN apt -y install curl
 RUN apt -y install build-essential
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /rustup.sh
+RUN chmod +x /rustup.sh
 
 USER builder
-
 # install rust stuff
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
+RUN /rustup.sh --default-toolchain 1.74.1 -y
 ENV PATH="/home/builder/.cargo/bin:$PATH"
 RUN rustup target add \
     aarch64-linux-android \
