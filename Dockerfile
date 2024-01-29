@@ -17,4 +17,4 @@ ENV PATH="/home/builder/.cargo/bin:$PATH"
 RUN id && rm -rf ~/.cargo/registry/index && cd ~/hello_world && cargo update --dry-run --color never
 RUN cd ~/hello_world && cargo fetch
 # test offline build works
-RUN cd ~/hello_world && cargo build --offline
+RUN cd ~/hello_world && cargo build --offline && cargo build --offline --release
