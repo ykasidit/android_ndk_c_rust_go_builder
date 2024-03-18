@@ -13,7 +13,7 @@ COPY ./hello_world /home/builder/hello_world
 RUN chown -R builder /home/builder/hello_world
 RUN apt -y install gcc-mingw-w64-x86-64 gcc-mingw-w64-i686
 RUN apt -y install g++-mingw-w64-x86-64 g++-mingw-w64-i686
-RUN apt -y install netcat busybox
+RUN apt -y install netcat busybox cmake ninja-build
 
 USER builder
 ENV PATH="/home/builder/.cargo/bin:$PATH"
