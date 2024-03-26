@@ -2,8 +2,8 @@ FROM ykasidit/android_ndk_c_rust_go_builder_base:latest
 
 USER root
 
-ENV PATH="/android-sdk/android-ndk-r22b:$PATH"
-ENV ANDROID_NDK_HOME=/android-sdk/android-ndk-r22b
+ENV PATH="/android-sdk/android-ndk-r26c:$PATH"
+ENV ANDROID_NDK_HOME=/android-sdk/android-ndk-r26c
 
 RUN apt -y update
 RUN apt -y install curl
@@ -12,14 +12,25 @@ RUN apt -y install build-essential
 USER builder
 
 # install rust stuff
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
+USER builder
+ENV PATH="/home/builder/.cargo/bin:$PATH"
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain 1.77.0 -y
 ENV PATH="/home/builder/.cargo/bin:$PATH"
 RUN rustup target add \
     aarch64-linux-android \
     armv7-linux-androideabi
-RUN cargo install cargo-ndk cbindgen bindgen
+RUN cargo install cargo-ndk cbindgen bindgen-cli
+RUN which rustc && rustc --version
+RUN rustc --version | grep 1.77.0
+RUN rustup target add aarch64-unknown-linux-gnu
+RUN rustup target add x86_64-pc-windows-gnu i686-pc-windows-gnu i686-pc-windows-msvc x86_64-pc-windows-msvc
 
 USER root
+
+RUN apt -y install gcc make gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu g++-aarch64-linux-gnu libusb-dev libusb-1.0-0-dev
+RUN apt -y install gcc-mingw-w64-x86-64 gcc-mingw-w64-i686
+RUN apt -y install g++-mingw-w64-x86-64 g++-mingw-w64-i686
+RUN apt -y install netcat busybox cmake ninja-build
 RUN apt -y install wget
 
 # install go stuff
@@ -28,7 +39,7 @@ RUN apt -y install file clang
 
 USER builder
 ENV PATH="${PATH}:/usr/local/go/bin"
-ENV ANDROID_TOOLCHAIN=/android-sdk/android-ndk-r22b/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android21-clang
+ENV ANDROID_TOOLCHAIN=/android-sdk/android-ndk-r26c/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android21-clang
 RUN go install std
 
 USER root
