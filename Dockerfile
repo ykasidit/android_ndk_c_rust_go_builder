@@ -44,6 +44,6 @@ USER root
 # some requirements for some C-calling python tests and some old 32bit libs
 RUN mkdir /sdcard && chmod 777 /sdcard && mkdir /data && chmod 777 /data && mkdir -p /android-sdk && chmod 777 /android-sdk
 RUN dpkg --add-architecture i386
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tshark socat pcregrep lib32z1 libc6-i386 lib32stdc++6 libclang-dev socat pcregrep tshark lib32z1 libc6-i386 lib32stdc++6 libclang-dev python3 python-is-python3 xxd python3-pip ipython3
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tshark socat pcregrep lib32z1 libc6-i386 lib32stdc++6 libclang-dev socat pcregrep tshark lib32z1 libc6-i386 lib32stdc++6 libclang-dev python3 python-is-python3 xxd python3-pip ipython3 file
 RUN pip install pandas gevent
 USER builder
