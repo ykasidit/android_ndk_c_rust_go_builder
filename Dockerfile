@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:20.04
 
 USER root
 
@@ -7,7 +7,7 @@ ENV PATH="/android-sdk/android-ndk-r26c:$PATH"
 ENV ANDROID_NDK_HOME=/android-sdk/android-ndk-r26c
 
 RUN apt -y update
-RUN apt -y install netcat busybox cmake ninja-build wget curl build-essential gcc make gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu g++-aarch64-linux-gnu libusb-dev libusb-1.0-0-dev clang
+RUN DEBIAN_FRONTEND=noninteractive  apt -y install netcat busybox cmake ninja-build wget curl build-essential gcc make gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu g++-aarch64-linux-gnu libusb-dev libusb-1.0-0-dev clang
 RUN apt -y install gcc-mingw-w64-x86-64 gcc-mingw-w64-i686
 RUN apt -y install g++-mingw-w64-x86-64 g++-mingw-w64-i686
 
