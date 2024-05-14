@@ -1,1 +1,1 @@
-docker push ykasidit/android_ndk_c_rust_go_builder_base:latest
+docker push `cat IMAGE`
