@@ -1,7 +1,7 @@
 FROM ykasidit/android_ndk_c_rust_go_builder_base_u2004:latest
 USER root
 RUN apt -y update
-RUN apt -y install cmake git pkgconf libglib2.0-dev
+RUN apt -y install cmake git pkgconf libglib2.0-dev libgcrypt20-dev libpcap-dev libc-ares-dev libgcrypt20-dev libglib2.0-dev flex bison libpcre2-dev libnghttp2-dev libnghttp3-dev libspeexdsp-dev
 COPY ./hello_world /home/builder/hello_world
 RUN chown -R builder /home/builder/hello_world
 
