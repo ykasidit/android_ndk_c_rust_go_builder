@@ -24,7 +24,7 @@ RUN echo "deb https://dl.winehq.org/wine-builds/ubuntu/ focal main" | tee /etc/a
 RUN apt-get update && apt-get install -y --install-recommends winehq-stable:amd64
 
 # Set the Wine prefix to avoid configuration dialogs
-ENV WINEPREFIX=/root/.wine64
+ENV WINEPREFIX=/home/builder/.wine64
 
 # Install any additional software via Wine (optional)
 # Example: RUN wine64 <installer.exe>
