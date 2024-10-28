@@ -1,0 +1,31 @@
+[package]
+name = "hello_world"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bitter = "0.6.1"
+hex = "0.4.3"
+function_name = "0.3.0"
+panic-message = "0.3.0"
+lazy_static = "1.4.0"
+serde_json = "1.0"
+num = "0.4"
+num-derive = "0.3"
+num-traits = "0.2"
+log = "0.4.20"
+serde = { version = "1.0.192", features = ["derive"] }
+serde-xml-rs = "0.6.0"
+rumqttc = { version = "0.24.0", features = ["websocket"] }
+tokio-rustls = "0.25.0"
+rustls-native-certs = "0.7.0"
+tokio = "1.36.0"
+[dependencies.uuid]
+version = "1.8.0"
+features = [
+    "v4",                # Lets you generate random UUIDs
+    "fast-rng",          # Use a faster (but still sufficiently random) RNG
+    "macro-diagnostics", # Enable better diagnostics for compile-time UUIDs
+]

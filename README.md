@@ -20,19 +20,19 @@ Rust: build executable or shared/static lib for Android
 -----------------------------------------------------------------
 (Run in an existing Rust cargo created project folder)
 
-`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder:latest bash -c "cd /build && cargo ndk build"`
+`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder_ext:latest bash -c "cd /build && cargo ndk build"`
 
 Rust: build executable or shared/static lib for GNU/Linux (Ubuntu 20.04)
 -------------------------------------------------------------------------------------------------------
 (Run in an existing Rust cargo created project folder)
 
-`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder:latest bash -c "cd /build && cargo build"`
+`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder_ext:latest bash -c "cd /build && cargo build"`
 
 Rust: clean the project ('target' folder)
 ------------------------------------------------
 (Run in an existing Rust cargo created project folder)
 
-`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder:latest bash -c "cd /build && cargo clean"`
+`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder_ext:latest bash -c "cd /build && cargo clean"`
 
 Rust: Generate headers for calling from C code
 ------------------------------------------------------------
@@ -41,29 +41,29 @@ Rust: Generate headers for calling from C code
 - Then run command:
 (Run in an existing Rust cargo created project folder)
 
-`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder:latest bash -c "cd /build && cbindgen . -o yourlib.h"`
+`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder_ext:latest bash -c "cd /build && cbindgen . -o yourlib.h"`
 
 C/C++: build `Android.mk` for Android
 -------------------------
 (Run in the 'jni' folder - that contains the `Android.mk` file - inside the desired NDK C/C++ project folder)
 
-`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder:latest bash -c "cd /build/qcdm_filter/android_exec_5/jni && ndk-build -j$(nproc)"`
+`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder_ext:latest bash -c "cd /build/qcdm_filter/android_exec_5/jni && ndk-build -j$(nproc)"`
 
 C/C++: build GNU/Linux `Makefile` (to build C/C++ code, etc)
 --------------------------------------------------------------
 (Run in the folder that has your `Makefile`)
 
-`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder:latest bash -c "cd /build/qcdm_filter && make -j$(nproc)"`
+`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder_ext:latest bash -c "cd /build/qcdm_filter && make -j$(nproc)"`
 
 Golang: Build for Android
 -------------------------------
 (Run in the folder of the `go.mod` or upper then cd into them if have other folder dependencies)
 
-`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder:latest bash -c 'cd /build && CC=$ANDROID_TOOLCHAIN CXX=$ANDROID_TOOLCHAIN CGO_ENABLED=1 CGO_CFLAGS=-fcommon GOOS=android GOARCH=arm64 go build -ldflags="-s -w"'`
+`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder_ext:latest bash -c 'cd /build && CC=$ANDROID_TOOLCHAIN CXX=$ANDROID_TOOLCHAIN CGO_ENABLED=1 CGO_CFLAGS=-fcommon GOOS=android GOARCH=arm64 go build -ldflags="-s -w"'`
 
 Golang: Build for GNU/Linux
 -------------------------------
 (Run in the folder of the `go.mod` or upper then cd into them if have other folder dependencies)
 
-`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder:latest bash -c 'cd /build && go build'`
+`docker run --rm -v $(pwd):/build ykasidit/android_ndk_c_rust_go_builder_ext:latest bash -c 'cd /build && go build'`
 
