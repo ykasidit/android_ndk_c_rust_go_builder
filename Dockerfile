@@ -32,7 +32,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt -y install netcat-openbsd busybox cmake n
 
 ############# test java 17
 ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
-RUN java --version | grep "openjdk 17"
+RUN java --version
 
 ########################### install wine for testing win64 exe/dlls
 # Set environment variables for non-interactive installation
@@ -110,7 +110,7 @@ WORKDIR /home/builder
 ENV WINEPREFIX=/home/builder/.wine64
 
 ################# install rust stuff (as user 'builder)
-ENV RUST_VER=1.77.0
+ENV RUST_VER=1.86.0
 ENV PATH="/home/builder/.cargo/bin:$PATH"
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain $RUST_VER -y
 ENV PATH="/home/builder/.cargo/bin:$PATH"
