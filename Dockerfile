@@ -31,7 +31,7 @@ RUN dpkg --add-architecture i386
 RUN DEBIAN_FRONTEND=noninteractive apt -y install netcat-openbsd busybox cmake ninja-build wget curl build-essential gcc make gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu g++-aarch64-linux-gnu libusb-dev libusb-1.0-0-dev clang tshark socat pcregrep lib32z1 libc6-i386 lib32stdc++6 libclang-dev socat pcregrep tshark lib32z1 libc6-i386 lib32stdc++6 libclang-dev python3 python-is-python3 xxd python3-pip ipython3 file python3-pandas python3-gevent cmake git pkgconf libglib2.0-dev libgcrypt20-dev libpcap-dev libc-ares-dev libgcrypt20-dev libglib2.0-dev flex bison libpcre2-dev libnghttp2-dev libspeexdsp-dev libunwind-dev gcc-mingw-w64-x86-64 gcc-mingw-w64-i686 g++-mingw-w64-x86-64 g++-mingw-w64-i686 openjdk-17-jdk
 
 ################# install flatbuffers for system python
-RUN pip3 install --break-system-packages flatbuffers
+RUN pip3 install --break-system-packages flatbuffers websocket-client
 
 ############# test java 17
 ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
