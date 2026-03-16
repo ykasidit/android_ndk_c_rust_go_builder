@@ -27,8 +27,7 @@ RUN adb version
 
 #################### install system packages
 RUN apt -y update
-RUN dpkg --add-architecture i386
-RUN DEBIAN_FRONTEND=noninteractive apt -y install netcat-openbsd busybox cmake ninja-build wget curl build-essential gcc make gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu g++-aarch64-linux-gnu libusb-dev libusb-1.0-0-dev clang tshark socat pcregrep lib32z1 libc6-i386 lib32stdc++6 libclang-dev socat pcregrep tshark lib32z1 libc6-i386 lib32stdc++6 libclang-dev python3 python-is-python3 xxd python3-pip ipython3 file python3-pandas python3-gevent cmake git pkgconf libglib2.0-dev libgcrypt20-dev libpcap-dev libc-ares-dev libgcrypt20-dev libglib2.0-dev flex bison libpcre2-dev libnghttp2-dev libspeexdsp-dev libunwind-dev gcc-mingw-w64-x86-64 gcc-mingw-w64-i686 g++-mingw-w64-x86-64 g++-mingw-w64-i686 openjdk-17-jdk
+RUN DEBIAN_FRONTEND=noninteractive apt -y install netcat-openbsd busybox cmake ninja-build wget curl build-essential gcc make gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu g++-aarch64-linux-gnu libusb-dev libusb-1.0-0-dev clang tshark socat pcregrep libclang-dev python3 python-is-python3 xxd python3-pip ipython3 file python3-pandas python3-gevent cmake git pkgconf libglib2.0-dev libgcrypt20-dev libpcap-dev libc-ares-dev libglib2.0-dev flex bison libpcre2-dev libnghttp2-dev libspeexdsp-dev libunwind-dev gcc-mingw-w64-x86-64 gcc-mingw-w64-i686 g++-mingw-w64-x86-64 g++-mingw-w64-i686 openjdk-17-jdk linux-tools-common linux-tools-generic
 
 ################# install flatbuffers for system python
 RUN pip3 install --break-system-packages flatbuffers websocket-client
@@ -53,8 +52,8 @@ RUN apt-get update && apt-get install -y \
 RUN wget -nc https://dl.winehq.org/wine-builds/winehq.key && apt-key add winehq.key && rm winehq.key
 RUN echo "deb https://dl.winehq.org/wine-builds/ubuntu/ $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/winehq.list
 
-# Update package list and install Wine 64-bit
-RUN apt-get update && apt-get install -y --install-recommends wine-stable
+# Update package list and install Wine 64-bit only (no i386)
+RUN apt-get update && apt-get install -y wine-stable-amd64
 
 ################# ensure ndk-build and wine are in PATH for all interactive shells (docker exec -it bash)
 RUN echo 'export PATH="'"$NDK_BIN"':$PATH"' > /etc/profile.d/builder-paths.sh \
