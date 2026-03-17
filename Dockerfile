@@ -148,3 +148,17 @@ RUN id && rm -rf ~/.cargo/registry/index && cd ~/hello_world && cargo update --d
 RUN cd ~/hello_world && cargo fetch
 # test offline build works
 RUN cd ~/hello_world && cargo build --offline && cargo build --offline --release
+
+#################### install bear and perf, fix wine PATH
+USER root
+RUN apt-get update && apt-get install -y bear linux-tools-$(uname -r)
+
+# Create wine/wine64 symlinks in /usr/local/bin pointing to the actual binary
+RUN ln -sf /opt/wine-stable/lib/wine/x86_64-unix/wine /usr/local/bin/wine \
+ && ln -sf /opt/wine-stable/lib/wine/x86_64-unix/wine /usr/local/bin/wine64
+
+############# test perf and wine
+RUN perf --version
+RUN wine64 --version
+
+USER builder
