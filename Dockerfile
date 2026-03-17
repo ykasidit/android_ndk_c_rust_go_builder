@@ -52,11 +52,12 @@ RUN apt-get update && apt-get install -y \
 RUN wget -nc https://dl.winehq.org/wine-builds/winehq.key && apt-key add winehq.key && rm winehq.key
 RUN echo "deb https://dl.winehq.org/wine-builds/ubuntu/ $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/winehq.list
 
-# Update package list and install Wine 64-bit only (no i386)
-RUN apt-get update && apt-get install -y wine-stable-amd64
+# Update package list and install Wine (full, includes wineserver)
+RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y --install-recommends wine-stable
+ENV PATH="/opt/wine-stable/bin:$PATH"
 
 ################# ensure ndk-build and wine are in PATH for all interactive shells (docker exec -it bash)
-RUN echo 'export PATH="'"$NDK_BIN"':$PATH"' > /etc/profile.d/builder-paths.sh \
+RUN echo 'export PATH="/opt/wine-stable/bin:'"$NDK_BIN"':$PATH"' > /etc/profile.d/builder-paths.sh \
  && echo 'export ANDROID_SDK='"$ANDROID_SDK" >> /etc/profile.d/builder-paths.sh \
  && echo 'export ANDROID_NDK_HOME='"$NDK_BIN" >> /etc/profile.d/builder-paths.sh \
  && echo 'export ANDROID_NDK='"$NDK_BIN" >> /etc/profile.d/builder-paths.sh \
@@ -149,16 +150,12 @@ RUN cd ~/hello_world && cargo fetch
 # test offline build works
 RUN cd ~/hello_world && cargo build --offline && cargo build --offline --release
 
-#################### install bear and perf, fix wine PATH
+#################### install bear and perf
 USER root
 RUN apt-get update && apt-get install -y bear linux-tools-$(uname -r)
 
-# Create wine/wine64 symlinks in /usr/local/bin pointing to the actual binary
-RUN ln -sf /opt/wine-stable/lib/wine/x86_64-unix/wine /usr/local/bin/wine \
- && ln -sf /opt/wine-stable/lib/wine/x86_64-unix/wine /usr/local/bin/wine64
-
 ############# test perf and wine
 RUN perf --version
-RUN wine64 --version
+RUN wine --version
 
 USER builder
