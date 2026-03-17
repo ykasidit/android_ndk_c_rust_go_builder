@@ -159,3 +159,6 @@ RUN perf --version
 RUN wine --version
 
 USER builder
+
+############# init wine prefix so first run is instant
+RUN wineboot --init
