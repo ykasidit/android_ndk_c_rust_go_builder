@@ -114,6 +114,9 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/* \
            /tmp/*
 
+################# install static analysis tools
+RUN apt-get update && apt-get install -y cppcheck coccinelle splint && rm -rf /var/lib/apt/lists/*
+
 ################# make builder user
 RUN useradd -ms /bin/bash builder
 USER builder
